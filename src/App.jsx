@@ -4,6 +4,7 @@ import { fetchWeather, fetchWeatherByCity, clearError } from './store/weatherSli
 import SearchBar from './components/SearchBar'
 import CurrentWeather from './components/CurrentWeather'
 import Forecast from './components/Forecast'
+import WeatherChart from './components/WeatherChart'
 import './App.css'
 
 function App() {
@@ -34,8 +35,10 @@ function App() {
   return (
     <div className="app">
       <header className="header">
-        <h1>Weather</h1>
-        <SearchBar onSearch={handleSearch} disabled={loading} />
+        <h1>What’s it like out?</h1>
+        <div className="header-search">
+          <SearchBar onSearch={handleSearch} disabled={loading} />
+        </div>
       </header>
 
       {error && (
@@ -50,18 +53,25 @@ function App() {
           <div className="loading">Loading weather…</div>
         )}
         {data && !loading && (
-          <>
-            <CurrentWeather
-              current={data.current}
-              locationName={locationName}
-              timezone={data.timezone}
-            />
-            <Forecast daily={data.daily} />
-          </>
+          <div className="main-content">
+            <div className="current-weather-wrap">
+              <CurrentWeather
+                current={data.current}
+                locationName={locationName}
+                timezone={data.timezone}
+              />
+            </div>
+            <div className="forecast-wrap">
+              <Forecast daily={data.daily} />
+            </div>
+          </div>
+        )}
+        {data && !loading && data.daily?.time?.length >= 5 && (
+          <WeatherChart daily={data.daily} />
         )}
       </main>
       <footer className="footer">
-        Data by <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a>
+        <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a>
       </footer>
     </div>
   )

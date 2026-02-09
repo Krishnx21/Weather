@@ -41,3 +41,18 @@ export function formatDay(dateStr) {
   if (d.toDateString() === tomorrow.toDateString()) return 'Tomorrow'
   return d.toLocaleDateString('en-US', { weekday: 'short' })
 }
+
+export function formatChartLabel(dateStr) {
+  const d = new Date(dateStr)
+  const today = new Date()
+  today.setHours(0, 0, 0, 0)
+  const dDate = new Date(d)
+  dDate.setHours(0, 0, 0, 0)
+  const diff = Math.round((dDate - today) / (1000 * 60 * 60 * 24))
+  if (diff === -2) return '2 days ago'
+  if (diff === -1) return 'Yesterday'
+  if (diff === 0) return 'Today'
+  if (diff === 1) return 'Tomorrow'
+  if (diff === 2) return 'Day after'
+  return d.toLocaleDateString('en-US', { weekday: 'short' })
+}

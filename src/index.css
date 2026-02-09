@@ -1,12 +1,17 @@
 :root {
-  --bg: #0f172a;
-  --card: #1e293b;
-  --accent: #38bdf8;
-  --accent-dim: #0ea5e9;
-  --text: #f1f5f9;
-  --text-muted: #94a3b8;
-  --success: #34d399;
-  --error: #f87171;
+  --bg: #f5f0e8;
+  --surface: #fff;
+  --ink: #1a1612;
+  --ink-soft: #4a443c;
+  --accent: #287271;
+  --accent-hover: #1f5857;
+  --accent-glow: rgba(40, 114, 113, 0.25);
+  --error: #b53c2c;
+  --error-bg: #fef2f0;
+  --shadow: 0 2px 12px rgba(26, 22, 18, 0.06);
+  --shadow-hover: 0 8px 28px rgba(26, 22, 18, 0.1);
+  --radius: 14px;
+  --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 * {
@@ -16,22 +21,44 @@
 }
 
 body {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   background: var(--bg);
-  color: var(--text);
+  color: var(--ink);
   min-height: 100vh;
-  background-image: 
-    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(56, 189, 248, 0.15), transparent),
-    radial-gradient(ellipse 60% 40% at 100% 0%, rgba(14, 165, 233, 0.08), transparent);
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse 120% 80% at 70% -30%, rgba(40, 114, 113, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse 80% 60% at -20% 50%, rgba(180, 140, 100, 0.04) 0%, transparent 45%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
 }
 
 #root {
   min-height: 100vh;
+  position: relative;
+  z-index: 1;
 }
 
 button {
   font-family: inherit;
   cursor: pointer;
+  transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
 }
 
 input {

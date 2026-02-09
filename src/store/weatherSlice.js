@@ -10,9 +10,10 @@ export const fetchWeather = createAsyncThunk(
       url.searchParams.set('latitude', latitude)
       url.searchParams.set('longitude', longitude)
       url.searchParams.set('current', 'temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m,precipitation')
-      url.searchParams.set('daily', 'weather_code,temperature_2m_max,temperature_2m_min')
+      url.searchParams.set('daily', 'weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,wind_speed_10m_max,relative_humidity_2m_mean')
       url.searchParams.set('timezone', 'auto')
       url.searchParams.set('forecast_days', '5')
+      url.searchParams.set('past_days', '2')
 
       const res = await fetch(url.toString())
       if (!res.ok) throw new Error('Failed to fetch weather')
@@ -39,9 +40,10 @@ export const fetchWeatherByCity = createAsyncThunk(
       url.searchParams.set('latitude', latitude)
       url.searchParams.set('longitude', longitude)
       url.searchParams.set('current', 'temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m,precipitation')
-      url.searchParams.set('daily', 'weather_code,temperature_2m_max,temperature_2m_min')
+      url.searchParams.set('daily', 'weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,wind_speed_10m_max,relative_humidity_2m_mean')
       url.searchParams.set('timezone', 'auto')
       url.searchParams.set('forecast_days', '5')
+      url.searchParams.set('past_days', '2')
 
       const res = await fetch(url.toString())
       if (!res.ok) throw new Error('Failed to fetch weather')

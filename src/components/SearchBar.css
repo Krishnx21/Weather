@@ -5,22 +5,29 @@
 
 .search-input {
   flex: 1;
-  padding: 0.65rem 1rem;
-  border: 1px solid rgba(148, 163, 184, 0.3);
-  border-radius: 10px;
-  background: var(--card);
-  color: var(--text);
-  font-size: 1rem;
+  padding: 0.7rem 1rem;
+  border: 1px solid rgba(26, 22, 18, 0.12);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 0.95rem;
   outline: none;
-  transition: border-color 0.2s;
+  transition: border-color 0.25s var(--ease), box-shadow 0.25s var(--ease), transform 0.2s var(--ease);
+  box-shadow: var(--shadow);
+}
+
+.search-input:hover {
+  border-color: rgba(26, 22, 18, 0.2);
 }
 
 .search-input::placeholder {
-  color: var(--text-muted);
+  color: var(--ink-soft);
+  opacity: 0.7;
 }
 
 .search-input:focus {
   border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(40, 114, 113, 0.15), 0 0 24px var(--accent-glow);
 }
 
 .search-input:disabled {
@@ -29,21 +36,27 @@
 }
 
 .search-btn {
-  padding: 0.65rem 1.25rem;
+  padding: 0.7rem 1.1rem;
   background: var(--accent);
-  color: var(--bg);
+  color: var(--surface);
   border: none;
-  border-radius: 10px;
+  border-radius: var(--radius);
   font-weight: 600;
-  font-size: 0.95rem;
-  transition: background 0.2s;
+  font-size: 0.9rem;
+  transition: background 0.25s var(--ease), transform 0.2s var(--ease), box-shadow 0.25s var(--ease);
 }
 
 .search-btn:hover:not(:disabled) {
-  background: var(--accent-dim);
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px var(--accent-glow);
+}
+
+.search-btn:active:not(:disabled) {
+  transform: translateY(0);
 }
 
 .search-btn:disabled {
-  opacity: 0.6;
+  opacity: 0.5;
   cursor: not-allowed;
 }
