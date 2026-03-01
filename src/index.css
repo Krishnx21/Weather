@@ -1,8 +1,10 @@
 :root {
   --bg: #f5f0e8;
   --surface: #fff;
+  --surface-hover: #fafafa;
   --ink: #1a1612;
   --ink-soft: #4a443c;
+  --ink-bright: #1a1612;
   --accent: #287271;
   --accent-hover: #1f5857;
   --accent-glow: rgba(40, 114, 113, 0.25);
@@ -12,6 +14,10 @@
   --shadow-hover: 0 8px 28px rgba(26, 22, 18, 0.1);
   --radius: 14px;
   --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --glass-border: rgba(26, 22, 18, 0.06);
+  --glass-border-hover: rgba(26, 22, 18, 0.12);
+  --glass-blur: blur(0px);
+  /* Unused in this theme */
 }
 
 * {
@@ -33,7 +39,7 @@ body::before {
   content: '';
   position: fixed;
   inset: 0;
-  background: 
+  background:
     radial-gradient(ellipse 120% 80% at 70% -30%, rgba(40, 114, 113, 0.06) 0%, transparent 50%),
     radial-gradient(ellipse 80% 60% at -20% 50%, rgba(180, 140, 100, 0.04) 0%, transparent 45%);
   pointer-events: none;
@@ -63,4 +69,11 @@ button {
 
 input {
   font-family: inherit;
+}
+
+.glass-panel {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--glass-border);
 }
