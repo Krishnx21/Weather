@@ -80,7 +80,7 @@
   line-height: 1.05;
   display: block;
   color: var(--ink);
-  text-shadow: 0 0 40px rgba(40, 114, 113, 0.08);
+  text-shadow: 0 0 40px rgba(40, 120, 119, 0.08);
 }
 
 .condition {
