@@ -14,7 +14,7 @@
   --shadow-hover: 0 8px 28px rgba(26, 22, 18, 0.1);
   --radius: 14px;
   --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  --glass-border: rgba(26, 22, 18, 0.06);
+  --glass-border: rgba(29, 25, 21, 0.06);
   --glass-border-hover: rgba(26, 22, 18, 0.12);
   --glass-blur: blur(0px);
   /* Unused in this theme */
